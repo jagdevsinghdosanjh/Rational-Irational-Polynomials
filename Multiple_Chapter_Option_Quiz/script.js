@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("submitBtn").addEventListener("click", submitQuiz);
   document.getElementById("downloadBtn").addEventListener("click", downloadResults);  
   document.getElementById("downloadBtn").disabled = true;
-  generateQRCode("https://example.com", () => {
+  generateQRCode("https://dosanjhpubsasr.org", () => {
     document.getElementById("qrCode").innerHTML = `<img src="${qrBase64}" alt="QR Code">`;
   });
   document.getElementById("logo").innerHTML = logoBase64 ? `<img src="${logoBase64}" alt="Logo">` : "";
