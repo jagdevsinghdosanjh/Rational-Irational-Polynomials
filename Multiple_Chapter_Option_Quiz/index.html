@@ -39,6 +39,83 @@
 
   <label for="studentName">Student Name:</label><br/>
   <input type="text" id="studentName" placeholder="Enter full name"/><br/>
+
+  <label for="versionSelect"><strong>Select Chapter:</strong></label><br/>
+  <select id="versionSelect" onchange="loadQuiz()">
+    <option value="1">Chapter 1 - Number Systems</option>
+    <option value="2">Chapter 2 - Polynomials</option>
+    <option value="3">Chapter 3 - Coordinate Geometry</option>
+    <option value="4">Chapter 4 - Linear Equations in Two Variables</option>
+    <option value="5">Chapter 5 - Introduction to Euclid's Geometry</option>
+    <option value="6">Chapter 6 - Lines and Angles</option>
+    <option value="7">Chapter 7 - Triangles</option>
+    <option value="8">Chapter 8 - Quadrilaterals</option>
+    <option value="9">Chapter 9 - Circles</option>
+    <option value="10">Chapter 10 - Heron's Formula</option>
+    <option value="11">Chapter 11 - Surface Areas and Volumes</option>
+    <option value="12">Chapter 12 - Statistics</option>
+    <option value="13">Chapters 1 to 6</option>
+    <option value="14">Chapters 7 to 12</option>  
+  </select>
+
+  <div id="quiz"></div>
+
+  <button onclick="submitQuiz()">Submit Quiz</button>
+  <button id="downloadBtn" disabled>Download PDF</button>
+  <button onclick="retakeQuiz()">Retake Quiz</button>
+
+  <div id="result"></div>
+  <div id="explanation"></div>
+
+  <!-- QR Code container (invisible) -->
+  <div id="qrcode" style="display:none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App - Dosanjh Educational Tutorials</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #00548f;
+    }
+    input[type="text"], select {
+      padding: 6px 10px;
+      margin: 10px 0;
+      width: 250px;
+      font-size: 14px;
+    }
+    button {
+      padding: 8px 16px;
+      margin-top: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #quiz p {
+      margin-bottom: 6px;
+    }
+    #explanation {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz Portal - Dosanjh Educational Tutorials</h1>
+
+  <label for="studentName">Student Name:</label><br/>
+  <input type="text" id="studentName" placeholder="Enter full name"/><br/>
   <label for="versionSelect"><strong>Select Chapter:</strong></label><br/>
     <select id="versionSelect">
       <option value="1">Chapter 1 - Number Systems</option>
@@ -90,4 +167,4 @@
       <option value="13">Chapters 1 to 6</option>
       <option value="14">Chapters 7 to 12</option>  
     </select>
-    
+     -->
