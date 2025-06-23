@@ -10,19 +10,6 @@ const versionTitles = {
   "5": "Chapter 5 - Euclid's Geometry"
 };
 
-// Convert uploaded logo image to base64 and store
-let logoBase64 = null;
-const logoImage = new Image();
-logoImage.src = "logo.jpeg"; // Ensure 'logo.jpeg' is placed in the same folder
-logoImage.onload = () => {
-  const canvas = document.createElement("canvas");
-  canvas.width = logoImage.width;
-  canvas.height = logoImage.height;
-  const ctx = canvas.getContext("2d");
-  ctx.drawImage(logoImage, 0, 0);
-  logoBase64 = canvas.toDataURL("image/jpeg");
-};
-
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -113,36 +100,25 @@ function generatePDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
 
-  const title = versionTitles[currentVersion] || `Quiz v${currentVersion}`;
-  const safeTitle = title.replace(/[\\/:*?"<>|]/g, "-");
-  const now = new Date();
-  const dateString = now.toLocaleDateString("en-GB", {
-    day: "2-digit", month: "short", year: "numeric"
-  }).replace(/ /g, "-");
-
   const pageHeight = doc.internal.pageSize.getHeight();
   const marginLeft = 15;
   const marginRight = 15;
   const usableWidth = doc.internal.pageSize.getWidth() - marginLeft - marginRight;
   let y = 20;
 
-  // Header: Logo
-  if (logoBase64) {
-    doc.addImage(logoBase64, "JPEG", marginLeft, 10, 30, 20);
-  }
+  const title = versionTitles[currentVersion] || `Quiz v${currentVersion}`;
+  const safeTitle = title.replace(/[\\/:*?"<>|]/g, "-");
 
-  // Title and score
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(14);
-  doc.text(`${title} - Quiz Results`, marginLeft + 35, 15);
-  doc.setFontSize(11);
-  doc.text(`Date: ${now.toDateString()}`, marginLeft + 35, 22);
-  doc.text(`Score: ${data.score} / ${data.responses.length}`, marginLeft + 35, 28);
-  y = 35;
+  doc.setFontSize(16);
+  doc.text(`${title} - Results`, marginLeft, 15);
+
+  doc.setFontSize(13);
+  doc.text(`Score: ${data.score} / ${data.responses.length}`, marginLeft, y);
+  y += 10;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(11);
-
   data.responses.forEach((res, index) => {
     const block = [
       `${index + 1}. ${res.question}`,
@@ -153,7 +129,7 @@ function generatePDF() {
 
     block.forEach(line => {
       const wrapped = doc.splitTextToSize(line, usableWidth);
-      if (y + wrapped.length * 6 > pageHeight - 30) {
+      if (y + wrapped.length * 6 > pageHeight - 15) {
         doc.addPage();
         y = 20;
       }
@@ -163,16 +139,7 @@ function generatePDF() {
     y += 4;
   });
 
-  // Signature Line
-  if (y + 20 > pageHeight - 20) {
-    doc.addPage();
-    y = 20;
-  }
-  doc.setFont("helvetica", "italic");
-  doc.text("________________________", marginLeft, pageHeight - 30);
-  doc.text("Teacher's Signature", marginLeft, pageHeight - 25);
-
-  doc.save(`${safeTitle} (${dateString}).pdf`);
+  doc.save(`${safeTitle}.pdf`);
 }
 
 function retakeQuiz() {
