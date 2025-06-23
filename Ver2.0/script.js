@@ -84,7 +84,6 @@ function submitQuiz() {
     });
 
     document.getElementById("explanation").innerHTML = explanationHTML;
-
     localStorage.setItem("polynomialQuizResults", JSON.stringify({ score, userResponses }));
     //localStorage.setItem("quizResults", JSON.stringify({ score, userResponses }));
 
