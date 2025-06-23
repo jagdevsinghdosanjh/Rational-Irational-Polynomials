@@ -1,27 +1,29 @@
-//Script for a Quiz Application V2.0
-//Rational Irrational and Polynomial Numbers Quiz
+const quizTitle = "Polynomial Quiz v2.0";
+
 const quizData = [
-    { 
-        question: "Which of the following is a polynomial?", 
-        options: ["2x² + 3x + 5", "1/x + 2", "√x + 3", "x⁻¹ + 4"], 
-        correct: 0 
+    {
+        question: "Which of the following is a polynomial?",
+        options: ["2x² + 3x + 5", "1/x + 2", "√x + 3", "x⁻¹ + 4"],
+        correct: 0,
+        explanation: "Polynomials must not include roots, negative exponents, or variables in denominators."
     },
-    { 
-        question: "What is the degree of the polynomial 3x⁴ + 2x³ - x + 7?", 
-        options: ["1", "3", "4", "7"], 
-        correct: 2 
+    {
+        question: "What is the degree of the polynomial 3x⁴ + 2x³ - x + 7?",
+        options: ["1", "3", "4", "7"],
+        correct: 2,
+        explanation: "The degree is determined by the highest exponent, which is 4 here."
     },
-    { 
-        question: "What is the zero of the polynomial x - 5?", 
-        options: ["5", "-5", "0", "None of the above"], 
-        correct: 0 
+    {
+        question: "What is the zero of the polynomial x - 5?",
+        options: ["5", "-5", "0", "None of the above"],
+        correct: 0,
+        explanation: "Solving x - 5 = 0 gives x = 5 as the root of the polynomial."
     }
 ];
 
-// Deep copy to preserve original data
+const storageKey = "polynomialQuizResults_v2";
 const shuffledQuizData = JSON.parse(JSON.stringify(quizData));
 
-// Utility to shuffle arrays
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -29,7 +31,6 @@ function shuffleArray(array) {
     }
 }
 
-// Shuffle questions and their options
 function randomizeQuiz() {
     shuffledQuizData.forEach((q, index) => {
         q.originalIndex = index;
@@ -43,40 +44,40 @@ function randomizeQuiz() {
 function loadQuiz() {
     randomizeQuiz();
     const quizContainer = document.getElementById("quiz");
-    quizContainer.innerHTML = ""; // Clear previous content if any
+    quizContainer.innerHTML = "";
     shuffledQuizData.forEach((q, index) => {
-        let questionHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
+        let html = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
         q.options.forEach((option, i) => {
-            questionHTML += `<label><input type="radio" name="question${index}" value="${i}"> ${option}</label><br>`;
+            html += `<label><input type="radio" name="question${index}" value="${i}"> ${option}</label><br>`;
         });
-        quizContainer.innerHTML += questionHTML + "<br>";
+        quizContainer.innerHTML += html + "<br>";
     });
 }
 
 function submitQuiz() {
     let score = 0;
-    let userResponses = [];
-    let explanationHTML = `<h2>Explanations:</h2>`;
+    const responses = [];
+    let explanationHTML = "<h2>Explanations:</h2>";
 
     shuffledQuizData.forEach((q, index) => {
-        const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-        const selectedIndex = selectedOption ? parseInt(selectedOption.value) : null;
+        const selected = document.querySelector(`input[name="question${index}"]:checked`);
+        const selectedIndex = selected ? parseInt(selected.value) : null;
         const isCorrect = selectedIndex === q.correct;
 
-        userResponses.push({
+        responses.push({
             question: q.question,
             selected: selectedIndex !== null ? q.options[selectedIndex] : "Not answered",
             correct: q.options[q.correct],
             explanation: q.explanation,
-            isCorrect: selectedIndex !== null ? isCorrect : false
+            isCorrect
         });
 
-        score += isCorrect ? 1 : 0;
+        if (isCorrect) score++;
     });
 
-    document.getElementById("result").innerHTML = `You scored ${score} out of ${shuffledQuizData.length}!`;
+    document.getElementById("result").textContent = `You scored ${score} out of ${shuffledQuizData.length}!`;
 
-    userResponses.forEach((res, i) => {
+    responses.forEach((res, i) => {
         explanationHTML += `<p><strong>${i + 1}. ${res.question}</strong><br>
             Your answer: ${res.selected}<br>
             Correct answer: ${res.correct}<br>
@@ -84,16 +85,18 @@ function submitQuiz() {
     });
 
     document.getElementById("explanation").innerHTML = explanationHTML;
-    localStorage.setItem("polynomialQuizResults", JSON.stringify({ score, userResponses }));
-    //localStorage.setItem("quizResults", JSON.stringify({ score, userResponses }));
-
+    localStorage.setItem(storageKey, JSON.stringify({ score, responses }));
 }
 
 function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-    const quizResults = JSON.parse(localStorage.getItem("polynomialQuizResults"));
-    //const quizResults = JSON.parse(localStorage.getItem("quizResults"));
+    const quizResults = JSON.parse(localStorage.getItem(storageKey));
+
+    if (!quizResults) {
+        alert("Please submit the quiz first.");
+        return;
+    }
 
     const pageHeight = doc.internal.pageSize.height;
     const pageWidth = doc.internal.pageSize.width;
@@ -101,20 +104,19 @@ function generatePDF() {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text("Quiz Results", 20, 15);
+    doc.text(`${quizTitle} - Results`, 20, 15);
 
     doc.setFontSize(13);
-    doc.text(`Score: ${quizResults.score} / ${quizResults.userResponses.length}`, 20, y);
+    doc.text(`Score: ${quizResults.score} / ${quizResults.responses.length}`, 20, y);
     y += 10;
 
-    quizResults.userResponses.forEach((res, index) => {
+    quizResults.responses.forEach((res, index) => {
         const block = [
             `${index + 1}. ${res.question}`,
             `Your answer: ${res.selected}`,
             `Correct answer: ${res.correct}`,
             `Explanation: ${res.explanation}`
         ];
-
         doc.setFontSize(11);
         block.forEach(line => {
             const wrapped = doc.splitTextToSize(line, pageWidth - 20);
@@ -125,12 +127,14 @@ function generatePDF() {
             doc.text(wrapped, 10, y);
             y += wrapped.length * 6;
         });
-
         y += 4;
     });
 
-    doc.save("quiz_results.pdf");
-
+    const filename = quizTitle.toLowerCase().replace(/\s+/g, "_") + "_results.pdf";
+    doc.save(filename);
 }
 
-window.onload = loadQuiz;
+document.addEventListener("DOMContentLoaded", () => {
+    loadQuiz();
+    document.getElementById("downloadBtn").addEventListener("click", generatePDF);
+});
