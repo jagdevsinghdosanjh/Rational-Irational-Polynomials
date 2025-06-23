@@ -221,4 +221,3 @@ function generatePDF() {
     doc.text("________________________", (pageWidth - 60) / 2, y);
     doc.text("Teacher's Signature", (pageWidth - 60) / 2, y + 6);
 
-    // QR Code
