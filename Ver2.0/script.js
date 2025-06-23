@@ -93,7 +93,9 @@ function submitQuiz() {
 function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-    const quizResults = JSON.parse(localStorage.getItem("quizResults"));
+    const quizResults = JSON.parse(localStorage.getItem("polynomialQuizResults"));
+    //const quizResults = JSON.parse(localStorage.getItem("quizResults"));
+
     const pageHeight = doc.internal.pageSize.height;
     const pageWidth = doc.internal.pageSize.width;
     let y = 20;
@@ -129,6 +131,7 @@ function generatePDF() {
     });
 
     doc.save("quiz_results.pdf");
+
 }
 
 window.onload = loadQuiz;
