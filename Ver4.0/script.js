@@ -64,7 +64,7 @@
       "question": "Find the value of (a - b)² when a = 3 and b = 2.",
       "options": ["1", "5", "10", "9"],
       "correct": 1,
-      "explanation": "Using (a - b)² = a² - 2ab + b², substituting a = 3, b = 2 gives 5."
+      "explanation": "Using (a - b)² = a² - 2ab + b², substituting a = 3, b = 2 gives 1."
     },
     {
       "question": "Which is a quadratic polynomial?",
@@ -201,7 +201,7 @@ function generatePDF() {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text("Physical World and Measurement Quiz Results", 20, 15);
+    doc.text("Rational Irrational and Polynomials Quiz Results", 20, 15);
 
     doc.setFontSize(13);
     doc.text(`Score: ${quizResults.score} / ${quizResults.userResponses.length}`, 20, y);

@@ -82,7 +82,7 @@ function generatePDF() {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text("Physical World and Measurement Quiz Results", 20, 15);
+    doc.text("Rational Irrational and Polynomials Quiz Results", 20, 15);
 
     doc.setFontSize(13);
     doc.text(`Score: ${quizResults.score} / ${quizResults.userResponses.length}`, 20, y);
