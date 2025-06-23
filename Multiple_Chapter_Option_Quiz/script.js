@@ -1,13 +1,34 @@
 let currentVersion = "1";
 let storageKey = "";
 let shuffledQuiz = [];
+document.addEventListener("DOMContentLoaded", () => {
+  const versionSelect = document.getElementById("versionSelect"); 
+  versionSelect.addEventListener("change", loadQuiz);
+  loadQuiz();
+  document.getElementById("submitBtn").addEventListener("click", submitQuiz);
+  document.getElementById("downloadBtn").addEventListener("click", downloadResults);  
+  document.getElementById("downloadBtn").disabled = true;
+  generateQRCode("https://example.com", () => {
+    document.getElementById("qrCode").innerHTML = `<img src="${qrBase64}" alt="QR Code">`;
+  });
+  document.getElementById("logo").innerHTML = logoBase64 ? `<img src="${logoBase64}" alt="Logo">` : "";
+  document.getElementById("stamp").innerHTML = stampBase64 ? `<img src="${stampBase64}" alt="Stamp">` : "";
 
 const versionTitles = {
   "1": "Chapter 1 - Number System",
   "2": "Chapter 2 - Polynomials",
   "3": "Chapter 3 - Coordinate Geometry",
   "4": "Chapter 4 - Linear Equations",
-  "5": "Chapter 5 - Euclid's Geometry"
+  "5": "Chapter 5 - Euclid's Geometry",
+  "6": "Chapter 6 - Lines and Angles",
+  "7": "Chapter 7 - Triangles",   
+  "8": "Chapter 8 - Quadrilaterals",
+  "9": "Chapter 9 - Circles", 
+  "10": "Chapter 10 - Heron's Formula",
+  "11": "Chapter 11 - Surface Areas and Volumes",
+  "12": "Chapter 12 - Statistics",
+  "13": "Chapters 1 to 6",
+  "14": "Chapters 7 to 12"
 };
 
 let logoBase64 = null;
