@@ -82,7 +82,7 @@ function submitQuiz() {
             Correct answer: ${res.correct}<br>
             Explanation: ${res.explanation}</p>`;
     });
-
+    document.getElementById("downloadBtn").disabled = false;
     document.getElementById("explanation").innerHTML = explanationHTML;
     localStorage.setItem(storageKey, JSON.stringify({ score, responses }));
 }
