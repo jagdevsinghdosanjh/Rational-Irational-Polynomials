@@ -1,3 +1,5 @@
+//Script for a Quiz Application V2.0
+//Rational Irrational and Polynomial Numbers Quiz
 const quizData = [
     { 
         question: "Which of the following is a polynomial?", 
