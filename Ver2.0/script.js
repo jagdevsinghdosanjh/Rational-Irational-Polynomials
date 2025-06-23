@@ -32,8 +32,7 @@ function shuffleArray(array) {
 }
 
 function randomizeQuiz() {
-    shuffledQuizData.forEach((q, index) => {
-        q.originalIndex = index;
+    shuffledQuizData.forEach(q => {
         const correctValue = q.options[q.correct];
         shuffleArray(q.options);
         q.correct = q.options.indexOf(correctValue);
