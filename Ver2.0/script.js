@@ -3,17 +3,6 @@ const quizData = [
     { question: "What is the degree of the polynomial 3x⁴ + 2x³ - x + 7?", options: ["1", "3", "4", "7"], correct: 2 },
     { question: "What is the zero of the polynomial x - 5?", options: ["5", "-5", "0", "None of the above"], correct: 0 }
 ];
-// Deep copy to preserve original data
-const shuffledQuizData = JSON.parse(JSON.stringify(quizData));
-
-// Utility to shuffle arrays
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
 
 // Deep copy to preserve original data
 const shuffledQuizData = JSON.parse(JSON.stringify(quizData));
