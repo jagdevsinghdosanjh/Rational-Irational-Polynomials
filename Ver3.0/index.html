@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polynomial Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <title>Polynomial Quiz v2.0</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="quiz-container">
-        <h1>Polynomial Quiz</h1>
+    <div class="container">
+        <h1>Polynomial Quiz v2.0</h1>
         <div id="quiz"></div>
         <button onclick="submitQuiz()">Submit Answers</button>
-        <button onclick="generatePDF()">Download PDF Report</button>
-        <p id="result"></p>
-        <div id="explanation"></div> 
+        <button id="downloadBtn">Download PDF</button>
+        <div id="result"></div>
+        <div id="explanation"></div>
     </div>
     <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </body>
 </html>
