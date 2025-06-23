@@ -14,13 +14,25 @@ function shuffleArray(array) {
     }
 }
 
+
+// Deep copy to preserve original data
+const shuffledQuizData = JSON.parse(JSON.stringify(quizData));
+
+// Utility to shuffle arrays
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 // Shuffle questions and their options
 function randomizeQuiz() {
     shuffledQuizData.forEach((q, index) => {
-        q.originalIndex = index;  // track original position
-        const correctValue = q.options[q.correct[0]];
+        q.originalIndex = index;
+        const correctValue = q.options[q.correct];
         shuffleArray(q.options);
-        q.correct[0] = q.options.indexOf(correctValue);
+        q.correct = q.options.indexOf(correctValue);
     });
     shuffleArray(shuffledQuizData);
 }
@@ -28,10 +40,11 @@ function randomizeQuiz() {
 function loadQuiz() {
     randomizeQuiz();
     const quizContainer = document.getElementById("quiz");
+    quizContainer.innerHTML = ""; // Clear previous content if any
     shuffledQuizData.forEach((q, index) => {
-        let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
+        let questionHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
         q.options.forEach((option, i) => {
-            questionHTML += `<input type="radio" name="question${index}" value="${i}"> ${option} <br>`;
+            questionHTML += `<label><input type="radio" name="question${index}" value="${i}"> ${option}</label><br>`;
         });
         quizContainer.innerHTML += questionHTML + "<br>";
     });
@@ -45,17 +58,17 @@ function submitQuiz() {
     shuffledQuizData.forEach((q, index) => {
         const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
         const selectedIndex = selectedOption ? parseInt(selectedOption.value) : null;
-        const isCorrect = selectedIndex === q.correct[0];
+        const isCorrect = selectedIndex === q.correct;
 
         userResponses.push({
             question: q.question,
             selected: selectedIndex !== null ? q.options[selectedIndex] : "Not answered",
-            correct: q.options[q.correct[0]],
+            correct: q.options[q.correct],
             explanation: q.explanation,
             isCorrect: selectedIndex !== null ? isCorrect : false
         });
 
-        score += selectedIndex !== null && isCorrect ? 1 : 0;
+        score += isCorrect ? 1 : 0;
     });
 
     document.getElementById("result").innerHTML = `You scored ${score} out of ${shuffledQuizData.length}!`;
@@ -82,7 +95,7 @@ function generatePDF() {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text("Rational Irrational and Polynomials Quiz Results", 20, 15);
+    doc.text("Quiz Results", 20, 15);
 
     doc.setFontSize(13);
     doc.text(`Score: ${quizResults.score} / ${quizResults.userResponses.length}`, 20, y);
@@ -107,9 +120,11 @@ function generatePDF() {
             y += wrapped.length * 6;
         });
 
-        y += 4; // extra spacing between questions
+        y += 4;
     });
 
     doc.save("quiz_results.pdf");
 }
+
 window.onload = loadQuiz;
+    
