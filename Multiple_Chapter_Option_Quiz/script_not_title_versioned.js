@@ -2,14 +2,6 @@ let currentVersion = "1";
 let storageKey = "";
 let shuffledQuiz = [];
 
-const versionTitles = {
-  "1": "Chapter 1 - Number System",
-  "2": "Chapter 2 - Polynomials",
-  "3": "Chapter 3 - Coordinate Geometry",
-  "4": "Chapter 4 - Linear Equations",
-  "5": "Chapter 5 - Euclid's Geometry"
-};
-
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -106,12 +98,9 @@ function generatePDF() {
   const usableWidth = doc.internal.pageSize.getWidth() - marginLeft - marginRight;
   let y = 20;
 
-  const title = versionTitles[currentVersion] || `Quiz v${currentVersion}`;
-  const safeTitle = title.replace(/[\\/:*?"<>|]/g, "-");
-
   doc.setFont("helvetica", "bold");
   doc.setFontSize(16);
-  doc.text(`${title} - Results`, marginLeft, 15);
+  doc.text(`Quiz v${currentVersion} - Results`, marginLeft, 15);
 
   doc.setFontSize(13);
   doc.text(`Score: ${data.score} / ${data.responses.length}`, marginLeft, y);
@@ -139,7 +128,7 @@ function generatePDF() {
     y += 4;
   });
 
-  doc.save(`${safeTitle}.pdf`);
+  doc.save(`quiz_v${currentVersion}_results.pdf`);
 }
 
 function retakeQuiz() {
