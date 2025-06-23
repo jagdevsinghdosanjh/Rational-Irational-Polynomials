@@ -1,7 +1,19 @@
 const quizData = [
-    { question: "Which of the following is a polynomial?", options: ["2x² + 3x + 5", "1/x + 2", "√x + 3", "x⁻¹ + 4"], correct: 0 },
-    { question: "What is the degree of the polynomial 3x⁴ + 2x³ - x + 7?", options: ["1", "3", "4", "7"], correct: 2 },
-    { question: "What is the zero of the polynomial x - 5?", options: ["5", "-5", "0", "None of the above"], correct: 0 }
+    { 
+        question: "Which of the following is a polynomial?", 
+        options: ["2x² + 3x + 5", "1/x + 2", "√x + 3", "x⁻¹ + 4"], 
+        correct: 0 
+    },
+    { 
+        question: "What is the degree of the polynomial 3x⁴ + 2x³ - x + 7?", 
+        options: ["1", "3", "4", "7"], 
+        correct: 2 
+    },
+    { 
+        question: "What is the zero of the polynomial x - 5?", 
+        options: ["5", "-5", "0", "None of the above"], 
+        correct: 0 
+    }
 ];
 
 // Deep copy to preserve original data
@@ -116,4 +128,3 @@ function generatePDF() {
 }
 
 window.onload = loadQuiz;
-    
