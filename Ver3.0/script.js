@@ -138,8 +138,6 @@ const quizData = [
   }
 ];
 
-
-
 const shuffledQuizData = JSON.parse(JSON.stringify(quizData));
 
 function shuffleArray(array) {
