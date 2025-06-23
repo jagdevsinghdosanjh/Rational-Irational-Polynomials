@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polynomial Quiz</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8" />
+  <title>Quiz Portal - Rational, Irrational & Polynomial</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="quiz-container">
-        <h1>Polynomial Quiz</h1>
-        <div id="quiz"></div>
-        <button onclick="submitQuiz()">Submit Answers</button>
-        <button onclick="generatePDF()">Download PDF Report</button>
-        <p id="result"></p>
-        <div id="explanation"></div> 
-    </div>
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <div class="container">
+    <h1>Quiz Portal</h1>
+
+    <label for="versionSelect"><strong>Select Version:</strong></label>
+    <select id="versionSelect">
+      <option value="1">Version 1.0</option>
+      <option value="2">Version 2.0</option>
+      <option value="3">Version 3.0</option>
+    </select>
+    <button onclick="loadQuiz()">Load Quiz</button>
+
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Submit Answers</button>
+    <button id="downloadBtn" disabled>Download PDF</button>
+    <button onclick="retakeQuiz()">Retake Quiz</button>
+
+    <div id="result"></div>
+    <div id="explanation"></div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
