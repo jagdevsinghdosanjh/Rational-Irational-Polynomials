@@ -1,4 +1,5 @@
 const quizTitle = "Polynomial Quiz v2.0";
+const storageKey = "polynomialQuizResults_v2";
 
 const quizData = [
     {
@@ -21,7 +22,6 @@ const quizData = [
     }
 ];
 
-const storageKey = "polynomialQuizResults_v2";
 const shuffledQuizData = JSON.parse(JSON.stringify(quizData));
 
 function shuffleArray(array) {
@@ -89,14 +89,15 @@ function submitQuiz() {
 }
 
 function generatePDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    const quizResults = JSON.parse(localStorage.getItem(storageKey));
-
-    if (!quizResults) {
+    const quizResultsRaw = localStorage.getItem(storageKey);
+    if (!quizResultsRaw) {
         alert("Please submit the quiz first.");
         return;
     }
+
+    const quizResults = JSON.parse(quizResultsRaw);
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
     const pageHeight = doc.internal.pageSize.height;
     const pageWidth = doc.internal.pageSize.width;
@@ -136,5 +137,8 @@ function generatePDF() {
 
 document.addEventListener("DOMContentLoaded", () => {
     loadQuiz();
-    document.getElementById("downloadBtn").addEventListener("click", generatePDF);
+    const downloadButton = document.getElementById("downloadBtn");
+    if (downloadButton) {
+        downloadButton.addEventListener("click", generatePDF);
+    }
 });
