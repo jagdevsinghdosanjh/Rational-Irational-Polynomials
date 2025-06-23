@@ -10,17 +10,17 @@ const versionTitles = {
   "5": "Chapter 5 - Euclid's Geometry"
 };
 
-// Load stamp logo
-let stampBase64 = null;
-const stampImage = new Image();
-stampImage.src = "stamp.jpeg"; // Place your uploaded stamp image as 'stamp.jpeg' in the same folder
-stampImage.onload = () => {
+// Convert uploaded logo image to base64 and store
+let logoBase64 = null;
+const logoImage = new Image();
+logoImage.src = "logo.jpeg"; // Ensure 'logo.jpeg' is placed in the same folder
+logoImage.onload = () => {
   const canvas = document.createElement("canvas");
-  canvas.width = stampImage.width;
-  canvas.height = stampImage.height;
+  canvas.width = logoImage.width;
+  canvas.height = logoImage.height;
   const ctx = canvas.getContext("2d");
-  ctx.drawImage(stampImage, 0, 0);
-  stampBase64 = canvas.toDataURL("image/jpeg");
+  ctx.drawImage(logoImage, 0, 0);
+  logoBase64 = canvas.toDataURL("image/jpeg");
 };
 
 function shuffleArray(array) {
@@ -126,16 +126,19 @@ function generatePDF() {
   const usableWidth = doc.internal.pageSize.getWidth() - marginLeft - marginRight;
   let y = 20;
 
-  // Header
+  // Header: Logo
+  if (logoBase64) {
+    doc.addImage(logoBase64, "JPEG", marginLeft, 10, 30, 20);
+  }
+
+  // Title and score
   doc.setFont("helvetica", "bold");
   doc.setFontSize(14);
-  doc.text(`${title} - Quiz Results`, marginLeft, y);
-  y += 8;
+  doc.text(`${title} - Quiz Results`, marginLeft + 35, 15);
   doc.setFontSize(11);
-  doc.text(`Date: ${now.toDateString()}`, marginLeft, y);
-  y += 8;
-  doc.text(`Score: ${data.score} / ${data.responses.length}`, marginLeft, y);
-  y += 10;
+  doc.text(`Date: ${now.toDateString()}`, marginLeft + 35, 22);
+  doc.text(`Score: ${data.score} / ${data.responses.length}`, marginLeft + 35, 28);
+  y = 35;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(11);
@@ -150,7 +153,7 @@ function generatePDF() {
 
     block.forEach(line => {
       const wrapped = doc.splitTextToSize(line, usableWidth);
-      if (y + wrapped.length * 6 > pageHeight - 40) {
+      if (y + wrapped.length * 6 > pageHeight - 30) {
         doc.addPage();
         y = 20;
       }
@@ -160,19 +163,14 @@ function generatePDF() {
     y += 4;
   });
 
-  // Stamp + Signature
-  if (y + 30 > pageHeight - 20) {
+  // Signature Line
+  if (y + 20 > pageHeight - 20) {
     doc.addPage();
     y = 20;
   }
-
-  if (stampBase64) {
-    doc.addImage(stampBase64, "JPEG", marginLeft, y, 30, 30);
-  }
-
   doc.setFont("helvetica", "italic");
-  doc.text("________________________", marginLeft + 50, y + 20);
-  doc.text("Teacher's Signature", marginLeft + 50, y + 26);
+  doc.text("________________________", marginLeft, pageHeight - 30);
+  doc.text("Teacher's Signature", marginLeft, pageHeight - 25);
 
   doc.save(`${safeTitle} (${dateString}).pdf`);
 }
