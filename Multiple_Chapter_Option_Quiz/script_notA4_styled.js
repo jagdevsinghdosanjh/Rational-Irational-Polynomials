@@ -40,7 +40,7 @@ async function loadQuiz() {
       quizContainer.innerHTML += html + "<br>";
     });
 
-    localStorage.removeItem(storageKey);
+    localStorage.removeItem(storageKey); // reset for this attempt
   } catch (error) {
     document.getElementById("quiz").innerHTML = "Error loading quiz. Please check the file.";
     console.error("Fetch error:", error);
@@ -90,24 +90,19 @@ function generatePDF() {
   }
 
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
-
-  const pageHeight = doc.internal.pageSize.getHeight();
-  const marginLeft = 15;
-  const marginRight = 15;
-  const usableWidth = doc.internal.pageSize.getWidth() - marginLeft - marginRight;
+  const doc = new jsPDF();
+  const pageHeight = doc.internal.pageSize.height;
+  const pageWidth = doc.internal.pageSize.width;
   let y = 20;
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(16);
-  doc.text(`Quiz v${currentVersion} - Results`, marginLeft, 15);
+  doc.text(`Quiz v${currentVersion} - Results`, 20, 15);
 
   doc.setFontSize(13);
-  doc.text(`Score: ${data.score} / ${data.responses.length}`, marginLeft, y);
+  doc.text(`Score: ${data.score} / ${data.responses.length}`, 20, y);
   y += 10;
 
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
   data.responses.forEach((res, index) => {
     const block = [
       `${index + 1}. ${res.question}`,
@@ -115,14 +110,14 @@ function generatePDF() {
       `Correct answer: ${res.correct}`,
       `Explanation: ${res.explanation}`
     ];
-
+    doc.setFontSize(11);
     block.forEach(line => {
-      const wrapped = doc.splitTextToSize(line, usableWidth);
+      const wrapped = doc.splitTextToSize(line, pageWidth - 20);
       if (y + wrapped.length * 6 > pageHeight - 15) {
         doc.addPage();
         y = 20;
       }
-      doc.text(wrapped, marginLeft, y);
+      doc.text(wrapped, 10, y);
       y += wrapped.length * 6;
     });
     y += 4;
