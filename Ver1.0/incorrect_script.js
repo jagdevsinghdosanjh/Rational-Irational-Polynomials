@@ -2,23 +2,19 @@ const quizData = [
     {
         question: "Which of the following is a polynomial?",
         options: ["2x² + 3x + 5", "1/x + 2", "√x + 3", "x⁻¹ + 4"],
-        correct: 0,
-        explanation: "A polynomial cannot have variables in denominators, under radicals, or negative exponents. Only the first option is a valid polynomial."
+        correct: 0
     },
     {
         question: "What is the degree of the polynomial 3x⁴ + 2x³ - x + 7?",
         options: ["1", "3", "4", "7"],
-        correct: 2,
-        explanation: "The degree is the highest exponent of the variable, which is 4."
+        correct: 2
     },
     {
         question: "What is the zero of the polynomial x - 5?",
         options: ["5", "-5", "0", "None of the above"],
-        correct: 0,
-        explanation: "Setting x - 5 = 0 gives x = 5 as the zero of the polynomial."
+        correct: 0
     }
 ];
-
 // Deep copy to preserve original data
 const shuffledQuizData = JSON.parse(JSON.stringify(quizData));
 
@@ -33,10 +29,10 @@ function shuffleArray(array) {
 // Shuffle questions and their options
 function randomizeQuiz() {
     shuffledQuizData.forEach((q, index) => {
-        q.originalIndex = index;
-        const correctValue = q.options[q.correct];
+        q.originalIndex = index;  // track original position
+        const correctValue = q.options[q.correct[0]];
         shuffleArray(q.options);
-        q.correct = q.options.indexOf(correctValue);
+        q.correct[0] = q.options.indexOf(correctValue);
     });
     shuffleArray(shuffledQuizData);
 }
@@ -44,11 +40,10 @@ function randomizeQuiz() {
 function loadQuiz() {
     randomizeQuiz();
     const quizContainer = document.getElementById("quiz");
-    quizContainer.innerHTML = ""; // Clear previous content if any
     shuffledQuizData.forEach((q, index) => {
-        let questionHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
+        let questionHTML = `<p>${index + 1}. ${q.question}</p>`;
         q.options.forEach((option, i) => {
-            questionHTML += `<label><input type="radio" name="question${index}" value="${i}"> ${option}</label><br>`;
+            questionHTML += `<input type="radio" name="question${index}" value="${i}"> ${option} <br>`;
         });
         quizContainer.innerHTML += questionHTML + "<br>";
     });
@@ -62,17 +57,17 @@ function submitQuiz() {
     shuffledQuizData.forEach((q, index) => {
         const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
         const selectedIndex = selectedOption ? parseInt(selectedOption.value) : null;
-        const isCorrect = selectedIndex === q.correct;
+        const isCorrect = selectedIndex === q.correct[0];
 
         userResponses.push({
             question: q.question,
             selected: selectedIndex !== null ? q.options[selectedIndex] : "Not answered",
-            correct: q.options[q.correct],
+            correct: q.options[q.correct[0]],
             explanation: q.explanation,
             isCorrect: selectedIndex !== null ? isCorrect : false
         });
 
-        score += isCorrect ? 1 : 0;
+        score += selectedIndex !== null && isCorrect ? 1 : 0;
     });
 
     document.getElementById("result").innerHTML = `You scored ${score} out of ${shuffledQuizData.length}!`;
@@ -99,7 +94,7 @@ function generatePDF() {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text("Quiz Results", 20, 15);
+    doc.text("Physical World and Measurement Quiz Results", 20, 15);
 
     doc.setFontSize(13);
     doc.text(`Score: ${quizResults.score} / ${quizResults.userResponses.length}`, 20, y);
@@ -124,11 +119,9 @@ function generatePDF() {
             y += wrapped.length * 6;
         });
 
-        y += 4;
+        y += 4; // extra spacing between questions
     });
 
     doc.save("quiz_results.pdf");
 }
-
 window.onload = loadQuiz;
-    
