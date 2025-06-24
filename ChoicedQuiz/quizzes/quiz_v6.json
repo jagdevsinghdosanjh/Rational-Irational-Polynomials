@@ -1,0 +1,14 @@
+[
+  {
+    "question": "Which is a polynomial?",
+    "options": ["x^2 + 3", "√x + 1", "1/x", "x⁻¹ + 2"],
+    "correct": 0,
+    "explanation": "Only x² + 3 follows all rules of polynomials."
+  },
+  {
+    "question": "Degree of 2x⁴ - 7x² + 5 is?",
+    "options": ["2", "4", "1", "3"],
+    "correct": 1,
+    "explanation": "The highest exponent is 4."
+  }
+]

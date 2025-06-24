@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Portal - For 9th Mathematics</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quiz Portal For 9th Mathematics</h1>
+
+        <label for="studentName"><strong>Student Name:</strong></label>
+        <input type="text" id="studentName" placeholder="Enter your name" /><br><br>
+
+        <label for="versionSelect"><strong>Select Version:</strong></label>
+        <select id="versionSelect">
+            <option value="1">Chapter 1 - Number Systems</option>
+            <option value="2">Chapter 2 - Polynomials</option>
+            <option value="3">Chapter 3 - Coordinate Geometry</option>
+            <option value="4">Chapter 4 - Linear Equations in Two Variables</option>
+            <option value="5">Chapter 5 - Introduction to Euclid's Geometry</option>
+            <option value="6">Chapter 6 - Lines and Angles</option>
+            <option value="7">Chapter 7 - Triangles</option>
+            <option value="8">Chapter 8 - Quadrilaterals</option>
+            <option value="9">Chapter 9 - Circles</option>
+            <option value="10">Chapter 10 - Heron's Formula</option>
+            <option value="11">Chapter 11 - Surface Areas and Volumes</option>
+            <option value="12">Chapter 12 - Statistics</option>
+            <option value="13">Chapters 1 to 6</option>
+            <option value="14">Chapters 7 to 12</option>
+        </select>
+        <button onclick="loadQuiz()">Load Quiz</button>
+
+        <div id="quiz"></div>
+        <button onclick="submitQuiz()">Submit Answers</button>
+        <button id="downloadBtn" disabled>Download PDF</button>
+        <button onclick="retakeQuiz()">Retake Quiz</button>
+        <div id="result"></div>
+        <div id="explanation"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
