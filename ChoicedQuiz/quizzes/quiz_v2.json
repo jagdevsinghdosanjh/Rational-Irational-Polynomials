@@ -3,12 +3,42 @@
     "question": "Which is a polynomial?",
     "options": ["x^2 + 3", "√x + 1", "1/x", "x⁻¹ + 2"],
     "correct": 0,
-    "explanation": "Only x² + 3 follows all rules of polynomials."
+    "explanation": "Only x² + 3 follows the definition of a polynomial, which requires non-negative integer exponents."
   },
   {
-    "question": "Degree of 2x⁴ - 7x² + 5 is?",
-    "options": ["2", "4", "1", "3"],
+    "question": "What is the degree of the polynomial 4x³ + 3x² - x + 7?",
+    "options": ["1", "2", "3", "4"],
+    "correct": 2,
+    "explanation": "The degree of a polynomial is the highest power of the variable. Here, it's 3."
+  },
+  {
+    "question": "Which of the following is a linear polynomial?",
+    "options": ["x² + 2x + 1", "3x + 5", "x³ - x", "5"],
     "correct": 1,
-    "explanation": "The highest exponent is 4."
+    "explanation": "A linear polynomial has degree 1. 3x + 5 fits this definition."
+  },
+  {
+    "question": "What is the coefficient of x² in the polynomial 5x² - 3x + 2?",
+    "options": ["5", "-3", "2", "0"],
+    "correct": 0,
+    "explanation": "The coefficient of x² is the number multiplied by x², which is 5."
+  },
+  {
+    "question": "Which of the following is not a polynomial?",
+    "options": ["x² + 1", "x⁻² + 3", "2x + 5", "x³ - 4x"],
+    "correct": 1,
+    "explanation": "x⁻² + 3 is not a polynomial because it contains a negative exponent."
+  },
+  {
+    "question": "What is the constant term in the polynomial 7x² - 4x + 9?",
+    "options": ["7", "-4", "9", "0"],
+    "correct": 2,
+    "explanation": "The constant term is the term without any variable, which is 9."
+  },
+  {
+    "question": "Which of the following is a quadratic polynomial?",
+    "options": ["x + 1", "x² + 2x + 1", "x³ - 3", "5"],
+    "correct": 1,
+    "explanation": "A quadratic polynomial has degree 2. x² + 2x + 1 is quadratic."
   }
 ]
