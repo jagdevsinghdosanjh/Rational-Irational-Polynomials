@@ -1,14 +1,182 @@
 [
   {
-    "question": "Which is a polynomial?",
-    "options": ["x^2 + 3", "√x + 1", "1/x", "x⁻¹ + 2"],
-    "correct": 0,
-    "explanation": "Only x² + 3 follows all rules of polynomials."
+    "question": "What is the name of the horizontal line in the Cartesian plane?",
+    "options": ["Y-axis", "X-axis", "Origin", "Quadrant"],
+    "correct": 1,
+    "explanation": "The horizontal line in the Cartesian plane is called the X-axis."
   },
   {
-    "question": "Degree of 2x⁴ - 7x² + 5 is?",
-    "options": ["2", "4", "1", "3"],
+    "question": "What is the point of intersection of the X-axis and Y-axis called?",
+    "options": ["Center", "Origin", "Vertex", "Intersection"],
     "correct": 1,
-    "explanation": "The highest exponent is 4."
+    "explanation": "The point where the X-axis and Y-axis intersect is called the Origin."
+  },
+  {
+    "question": "What are the coordinates of the origin?",
+    "options": ["(1,1)", "(0,0)", "(x,y)", "(2,2)"],
+    "correct": 1,
+    "explanation": "The coordinates of the origin are (0,0)."
+  },
+  {
+    "question": "Which quadrant does the point (-3, 4) lie in?",
+    "options": ["I", "II", "III", "IV"],
+    "correct": 1,
+    "explanation": "(-3, 4) lies in the second quadrant where x is negative and y is positive."
+  },
+  {
+    "question": "In which quadrant does the point (5, -2) lie?",
+    "options": ["I", "II", "III", "IV"],
+    "correct": 3,
+    "explanation": "(5, -2) lies in the fourth quadrant where x is positive and y is negative."
+  },
+  {
+    "question": "What is the x-coordinate of the point (7, -3)?",
+    "options": ["7", "-3", "0", "3"],
+    "correct": 0,
+    "explanation": "The x-coordinate is the first value in the ordered pair, which is 7."
+  },
+  {
+    "question": "What is the y-coordinate of the point (-5, 2)?",
+    "options": ["-5", "2", "0", "5"],
+    "correct": 1,
+    "explanation": "The y-coordinate is the second value in the ordered pair, which is 2."
+  },
+  {
+    "question": "Which axis does the point (0, 4) lie on?",
+    "options": ["X-axis", "Y-axis", "Both", "None"],
+    "correct": 1,
+    "explanation": "If x = 0, the point lies on the Y-axis."
+  },
+  {
+    "question": "Which axis does the point (3, 0) lie on?",
+    "options": ["X-axis", "Y-axis", "Both", "None"],
+    "correct": 0,
+    "explanation": "If y = 0, the point lies on the X-axis."
+  },
+  {
+    "question": "Which of the following points lies in the third quadrant?",
+    "options": ["(2, 3)", "(-2, 3)", "(-2, -3)", "(2, -3)"],
+    "correct": 2,
+    "explanation": "In the third quadrant, both x and y are negative."
+  },
+  {
+    "question": "How many quadrants are there in the Cartesian plane?",
+    "options": ["2", "3", "4", "5"],
+    "correct": 2,
+    "explanation": "The Cartesian plane is divided into 4 quadrants."
+  },
+  {
+    "question": "What is the sign of coordinates in the first quadrant?",
+    "options": ["(+,+)", "(+,-)", "(-,+)", "(-,-)"],
+    "correct": 0,
+    "explanation": "In the first quadrant, both x and y are positive."
+  },
+  {
+    "question": "What is the sign of coordinates in the fourth quadrant?",
+    "options": ["(+,+)", "(+,-)", "(-,+)", "(-,-)"],
+    "correct": 1,
+    "explanation": "In the fourth quadrant, x is positive and y is negative."
+  },
+  {
+    "question": "Which of the following points lies on the Y-axis?",
+    "options": ["(0, 5)", "(5, 0)", "(3, 3)", "(-2, -2)"],
+    "correct": 0,
+    "explanation": "Points on the Y-axis have x = 0."
+  },
+  {
+    "question": "Which of the following points lies on the X-axis?",
+    "options": ["(0, 5)", "(5, 0)", "(3, 3)", "(-2, -2)"],
+    "correct": 1,
+    "explanation": "Points on the X-axis have y = 0."
+  },
+  {
+    "question": "What is the name of the vertical line in the Cartesian plane?",
+    "options": ["X-axis", "Y-axis", "Z-axis", "Diagonal"],
+    "correct": 1,
+    "explanation": "The vertical line in the Cartesian plane is called the Y-axis."
+  },
+  {
+    "question": "Which quadrant does the point (-4, -5) lie in?",
+    "options": ["I", "II", "III", "IV"],
+    "correct": 2,
+    "explanation": "(-4, -5) lies in the third quadrant where both x and y are negative."
+  },
+  {
+    "question": "Which quadrant does the point (6, 7) lie in?",
+    "options": ["I", "II", "III", "IV"],
+    "correct": 0,
+    "explanation": "(6, 7) lies in the first quadrant where both x and y are positive."
+  },
+  {
+    "question": "Which of the following points lies in the second quadrant?",
+    "options": ["(3, -2)", "(-3, 2)", "(-3, -2)", "(3, 2)"],
+    "correct": 1,
+    "explanation": "In the second quadrant, x is negative and y is positive."
+  },
+  {
+    "question": "What is the distance of the point (0, 5) from the X-axis?",
+    "options": ["0", "5", "10", "Cannot be determined"],
+    "correct": 1,
+    "explanation": "Distance from the X-axis is the absolute value of the y-coordinate."
+  },
+  {
+    "question": "What is the distance of the point (4, 0) from the Y-axis?",
+    "options": ["0", "4", "8", "Cannot be determined"],
+    "correct": 1,
+    "explanation": "Distance from the Y-axis is the absolute value of the x-coordinate."
+  },
+  {
+    "question": "Which of the following points lies in the fourth quadrant?",
+    "options": ["(-2, -3)", "(2, -3)", "(-2, 3)", "(2, 3)"],
+    "correct": 1,
+    "explanation": "In the fourth quadrant, x is positive and y is negative."
+  },
+  {
+    "question": "What is the general form of a point in the Cartesian plane?",
+    "options": ["(x:y)", "(x,y)", "[x,y]", "{x,y}"],
+    "correct": 1,
+    "explanation": "Points are represented as ordered pairs in the form (x, y)."
+  },
+  {
+    "question": "Which of the following is not a valid coordinate point?",
+    "options": ["(3, 4)", "(0, -2)", "(x, y)", "(4; 5)"],
+    "correct": 3,
+    "explanation": "Coordinates are written with a comma, not a semicolon."
+  },
+  {
+    "question": "If a point lies on both the X-axis and Y-axis, what are its coordinates?",
+    "options": ["(0, 0)", "(1, 1)", "(0, 1)", "(1, 0)"],
+    "correct": 0,
+    "explanation": "The only point common to both axes is the origin: (0, 0)."
+  },
+  {
+    "question": "Which of the following points lies in the first quadrant?",
+    "options": ["(-1, 2)", "(1, -2)", "(-1, -2)", "(2, 3)"],
+    "correct": 3,
+    "explanation": "In the first quadrant, both x and y are positive."
+  },
+  {
+    "question": "What is the sign of coordinates in the second quadrant?",
+    "options": ["(+,+)", "(-,+)", "(-,-)", "(+,-)"],
+    "correct": 1,
+    "explanation": "In the second quadrant, x is negative and y is positive."
+  },
+  {
+    "question": "What is the sign of coordinates in the third quadrant?",
+    "options": ["(+,+)", "(-,+)", "(-,-)", "(+,-)"],
+    "correct": 2,
+    "explanation": "In the third quadrant, both x and y are negative."
+  },
+  {
+    "question": "What is the sign of coordinates in the fourth quadrant?",
+    "options": ["(+,+)", "(-,+)", "(-,-)", "(+,-)"],
+    "correct": 3,
+    "explanation": "In the fourth quadrant, x is positive and y is negative."
+  },
+  {
+    "question": "Which of the following points lies on the line y = x?",
+    "options": ["(2, 3)", "(3, 2)", "(4, 4)", "(5, -5)"],
+    "correct": 2,
+    "explanation": "On the line y = x, the x and y coordinates are equal."
   }
 ]
