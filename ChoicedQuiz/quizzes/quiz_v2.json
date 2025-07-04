@@ -40,5 +40,143 @@
     "options": ["x + 1", "x² + 2x + 1", "x³ - 3", "5"],
     "correct": 1,
     "explanation": "A quadratic polynomial has degree 2. x² + 2x + 1 is quadratic."
+  },
+  {
+    "question": "What is the degree of the constant polynomial 7?",
+    "options": ["0", "1", "Undefined", "7"],
+    "correct": 0,
+    "explanation": "The degree of a non-zero constant polynomial is 0."
+  },
+  {
+    "question": "Which of the following is a monomial?",
+    "options": ["3x²", "x² + x", "x + 1", "x³ - 2x"],
+    "correct": 0,
+    "explanation": "A monomial has only one term. 3x² is a single term."
+  },
+  {
+    "question": "Which of these is a binomial?",
+    "options": ["x² + 3x", "x", "x³ + x² + x", "5"],
+    "correct": 0,
+    "explanation": "A binomial has exactly two terms. x² + 3x fits this definition."
+  },
+  {
+    "question": "What is the value of the polynomial x² + 2x + 1 at x = 2?",
+    "options": ["9", "8", "7", "6"],
+    "correct": 0,
+    "explanation": "Substitute x = 2: (2)² + 2×2 + 1 = 4 + 4 + 1 = 9."
+  },
+  {
+    "question": "Which of the following is a zero of the polynomial x² - 4?",
+    "options": ["2", "3", "0", "1"],
+    "correct": 0,
+    "explanation": "x² - 4 = 0 when x = 2 or x = -2. So 2 is a zero."
+  },
+  {
+    "question": "Which of the following is a cubic polynomial?",
+    "options": ["x³ + 2x² + x + 1", "x² + 1", "x + 1", "5"],
+    "correct": 0,
+    "explanation": "A cubic polynomial has degree 3. x³ + 2x² + x + 1 fits this."
+  },
+  {
+    "question": "What is the number of terms in the polynomial 3x² - 2x + 7?",
+    "options": ["1", "2", "3", "4"],
+    "correct": 2,
+    "explanation": "There are three terms: 3x², -2x, and 7."
+  },
+  {
+    "question": "Which of the following is a zero polynomial?",
+    "options": ["0", "x", "x²", "1"],
+    "correct": 0,
+    "explanation": "The zero polynomial is the polynomial with all coefficients zero, i.e., 0."
+  },
+  {
+    "question": "What is the degree of the zero polynomial?",
+    "options": ["0", "1", "Undefined", "-1"],
+    "correct": 2,
+    "explanation": "The degree of the zero polynomial is undefined."
+  },
+  {
+    "question": "Which of the following is not a term in the polynomial 2x² - 3x + 5?",
+    "options": ["2x²", "-3x", "5", "x³"],
+    "correct": 3,
+    "explanation": "x³ is not present in the polynomial."
+  },
+  {
+    "question": "What is the coefficient of x in the polynomial x² - 4x + 7?",
+    "options": ["-4", "4", "7", "1"],
+    "correct": 0,
+    "explanation": "The coefficient of x is -4."
+  },
+  {
+    "question": "Which of the following is a polynomial in one variable?",
+    "options": ["x² + 2x + 1", "x² + y", "x + y + z", "xyz"],
+    "correct": 0,
+    "explanation": "x² + 2x + 1 has only one variable: x."
+  },
+  {
+    "question": "Which of the following is a polynomial in two variables?",
+    "options": ["x² + y²", "x³", "x + 1", "5"],
+    "correct": 0,
+    "explanation": "x² + y² has two variables: x and y."
+  },
+  {
+    "question": "Which of the following expressions is not a polynomial?",
+    "options": ["x² + 1", "x + √x", "x³ - 2x", "3x² + 2x + 1"],
+    "correct": 1,
+    "explanation": "x + √x is not a polynomial because √x is not a valid term."
+  },
+  {
+    "question": "What is the standard form of the polynomial 5 - x + 3x²?",
+    "options": ["3x² - x + 5", "-x + 3x² + 5", "5 + 3x² - x", "x² - x + 5"],
+    "correct": 0,
+    "explanation": "Standard form arranges terms in descending order of degree: 3x² - x + 5."
+  },
+  {
+    "question": "What is the degree of the polynomial 6x⁵ - 3x³ + x - 8?",
+    "options": ["3", "5", "6", "8"],
+    "correct": 1,
+    "explanation": "The highest power of x is 5, so the degree is 5."
+  },
+  {
+    "question": "Which of the following is a polynomial with three terms?",
+    "options": ["x² + 2x + 3", "x + 1", "x³", "5x² - 4x"],
+    "correct": 0,
+    "explanation": "x² + 2x + 3 has three terms, making it a trinomial."
+  },
+  {
+    "question": "What is the value of the polynomial x² - x + 1 at x = -1?",
+    "options": ["1", "3", "0", "-1"],
+    "correct": 1,
+    "explanation": "Substitute x = -1: (-1)² - (-1) + 1 = 1 + 1 + 1 = 3."
+  },
+  {
+    "question": "Which of the following is a polynomial in standard form?",
+    "options": ["2 + x + x²", "x² + x + 2", "x + 2 + x²", "x² + 2 + x"],
+    "correct": 1,
+    "explanation": "Standard form arranges terms in descending order of degree: x² + x + 2."
+  },
+  {
+    "question": "Which of the following is a polynomial of degree 0?",
+    "options": ["0", "x", "5", "x²"],
+    "correct": 2,
+    "explanation": "A constant non-zero polynomial like 5 has degree 0."
+  },
+  {
+    "question": "Which of the following is a polynomial in three variables?",
+    "options": ["x + y + z", "x² + y", "x + 1", "xyz"],
+    "correct": 0,
+    "explanation": "x + y + z includes three variables: x, y, and z."
+  },
+  {
+    "question": "What is the sum of the polynomials (2x + 3) and (x - 5)?",
+    "options": ["3x - 2", "x + 8", "3x - 8", "2x - 2"],
+    "correct": 0,
+    "explanation": "Add like terms: (2x + x) + (3 - 5) = 3x - 2."
+  },
+  {
+    "question": "Which of the following is a polynomial with a negative coefficient?",
+    "options": ["x² + 3x", "-2x + 1", "x³ + 4", "5x²"],
+    "correct": 1,
+    "explanation": "-2x + 1 has a negative coefficient for x."
   }
 ]
